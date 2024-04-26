@@ -1,0 +1,23 @@
+{
+  "name": "posts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cleave.js": "^1.6.0",
+    "imask": "^7.4.0",
+    "redom": "^4.0.0",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "parcel": "^2.11.0",
+    "ts-jest": "^29.1.2"
+  }
+}
