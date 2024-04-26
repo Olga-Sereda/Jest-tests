@@ -1,5 +1,4 @@
-// import { input } from '@/main.js'
-var input.input = require('@/main.js')
+import { input } from '../main.js'
 
 describe('CardNumber', () => {
     it('Недостаточное кол-во цифр', () => {
