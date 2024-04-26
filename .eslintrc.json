@@ -1,23 +1,14 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "node": true
+    "es6": true,
+    "node": true,
+    "jest/globals": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
+  "plugins": ["jest"],
   "parserOptions": {
-    "ecmaVersion": 13,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2020
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "error"
-  }
+  "extends": ["eslint:recommended", "plugin:jest/recommended", "prettier"]
 }
