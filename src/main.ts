@@ -1,12 +1,12 @@
 import { el, mount, setAttr } from 'redom'
 import Cleave from 'cleave.js'
 
-const label = el('label.labelCard', 'Введите данные карты')
-export const input = el('input.cartNumber', {
+const label = el('label.labelCard#labelId', 'Введите данные карты')
+export const input = el('input.cartNumber#cardNumber', {
   placeholder: '0000-0000-0000-0000',
   required: 'required'
 })
-const errorCard = el('.error', { style: { color: 'red' } })
+const errorCard = el('.error#errorId', { style: { color: 'red' } })
 
 const inputDate = el('input.cardDate', {
   placeholder: '00/00',
