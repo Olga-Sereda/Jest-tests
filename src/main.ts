@@ -44,72 +44,75 @@ const container = el(
   ])
 )
 mount(document.body, container)
-// setChildren(container, form)
-// setChildren(block, [inputDate, inputCVV])
-// setChildren(form, [label, input, errorCard, block, errorDate, errorCVV, labelMail, inputMail, error, button])
 
-inputMail.onblur = function () {
-  if (!inputMail.textContent.includes('@')) {
+inputMail.addEventListener('blur', () => {
+  // @ts-expect-error Property 'value' does not exist on type 'HTMLElement'.ts(2339)
+  if (!inputMail.value.includes('@')) {
     inputMail.classList.add('invalid')
-    error.innerHTML = 'Пожалуйста, введите правильный email.'
-    inputMail.focus()
+    error.textContent = 'Пожалуйста, введите правильный email.'
   } else {
     inputMail.classList.remove('invalid')
-    error.innerHTML = ''
+    error.textContent = ''
   }
-}
+})
 
-input.onblur = function () {
-  if (input.textContent.length <= 15) {
+input.addEventListener('blur', () => {
+  // @ts-expect-error Property 'value' does not exist on type 'HTMLElement'.ts(2339)
+  if (input.value.length <= 15) {
     input.classList.add('invalid')
     errorCard.innerHTML = 'Пожалуйста, введите корректный номер'
-    input.focus()
     return false
   } else {
     input.classList.remove('invalid')
     errorCard.innerHTML = ''
     return true
   }
-}
+})
 
-inputDate.onblur = function () {
-  if (inputDate.textContent.length < 4) {
+inputDate.addEventListener('blur', () => {
+  // @ts-expect-error Property 'value' does not exist on type 'HTMLElement'.ts(2339)
+  if (inputDate.value.length < 4) {
     inputDate.classList.add('invalid')
     errorDate.innerHTML = 'Пожалуйста, введите корректную дату'
-    inputDate.focus()
   } else {
     inputDate.classList.remove('invalid')
     errorDate.innerHTML = ''
   }
-}
+})
 
-inputCVV.onblur = function () {
-  if (inputCVV.textContent.length < 3) {
+inputCVV.addEventListener('blur', () => {
+  // @ts-expect-error Property 'value' does not exist on type 'HTMLElement'.ts(2339)
+  if (inputCVV.value.length < 3) {
     inputCVV.classList.add('invalid')
-    errorCVV.innerHTML = 'Пожалуйста, введите корректный CVV'
-    inputCVV.focus()
+    errorCVV.textContent = 'Пожалуйста, введите корректный CVV'
   } else {
     inputCVV.classList.remove('invalid')
-    errorCVV.innerHTML = ''
+    errorCVV.textContent = ''
   }
-}
+})
 
 const inputs = document.querySelectorAll('input')
 
 const checkForm = () => {
   for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].textContent === '') {
+    if (inputs[i].value === '') {
       setAttr(button, { disabled: true })
-      // button.disabled = true
       return
     }
   }
-  // button.disabled = false
   setAttr(button, { disabled: false })
 }
 
 for (const inputVal of inputs) {
-  inputVal.onkeydown = inputVal.onkeyup = inputVal.onchange = checkForm
+  inputVal.addEventListener('change', () => {
+    checkForm()
+  })
+  inputVal.addEventListener('keyup', () => {
+    checkForm()
+  })
+  inputVal.addEventListener('keydown', () => {
+    checkForm()
+  })
 }
 
 new Cleave(input, {
