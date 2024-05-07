@@ -1,5 +1,5 @@
 import { el, mount, setAttr } from 'redom'
-// import Cleave from 'cleave.js'
+import Inputmask from 'inputmask'
 
 const label = el('label.labelCard#labelId', 'Введите данные карты')
 const input = el('input.cartNumber#cardNumber', {
@@ -211,16 +211,6 @@ for (const inputVal of inputs) {
   })
 }
 
-// new Cleave(input, {
-//   creditCard: true,
-//   creditCardStrictMode: true
-// })
-
-// new Cleave(inputDate, {
-//   date: true,
-//   datePattern: ['m', 'y']
-// })
-
-// new Cleave(inputCVV, {
-//   blocks: [3]
-// })
+const elem = document.getElementById('cardNumber')
+const im = new Inputmask('9999 9999 9999 9999')
+im.mask(elem)
